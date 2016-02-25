@@ -1,1 +1,7 @@
-<html><body></body></html>
+<html>
+  <head>
+  </head>
+  <body>
+  <?php echo "lel"; ?>
+  </body>
+</html>
