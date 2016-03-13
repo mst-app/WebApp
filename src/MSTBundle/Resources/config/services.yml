@@ -1,0 +1,4 @@
+services:
+#    mst.example:
+#        class: MSTBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

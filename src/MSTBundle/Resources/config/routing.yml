@@ -1,0 +1,3 @@
+mst_homepage:
+    path:     /
+    defaults: { _controller: MSTBundle:Default:index }
