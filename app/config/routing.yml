@@ -1,10 +1,10 @@
 mst:
-    resource: "@APIBundle/Resources/config/routing.yml"
-    prefix:   /api/
+    resource: "@MSTBundle/Resources/config/routing.yml"
+    prefix:   /test/
 
 api:
-    resource: "@MSTBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@APIBundle/Resources/config/routing.yml"
+    prefix:   /api/
 
 app:
     resource: "@AppBundle/Controller/"
