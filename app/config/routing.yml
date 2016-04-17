@@ -1,8 +1,8 @@
-mst:
+api:
     resource: "@APIBundle/Resources/config/routing.yml"
     prefix:   /api/
 
-api:
+mst:
     resource: "@MSTBundle/Resources/config/routing.yml"
     prefix:   /
 
