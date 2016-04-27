@@ -1,3 +1,18 @@
 api_homepage:
     path:     /
     defaults: { _controller: APIBundle:Default:index }
+api_authentication:
+    path:     /connect/auth/{login}
+    defaults: { _controller: APIBundle:Connection:second }
+api_auth:
+    path:     /connect/{login}
+    defaults: { _controller: APIBundle:Connection:first }
+api_signin:
+    path:     /signin
+    defaults: { _controller: APIBundle:Inscription:first }
+api_sigout:
+    path:     /signout
+    defaults: { _controller: APIBundle:Inscription:signout }
+api_addstop:
+    path:     /addstop/{busline}
+    defaults: { _controller: APIBundle:Bus:addStop }

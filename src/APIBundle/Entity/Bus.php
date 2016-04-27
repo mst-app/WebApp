@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Bus
 {
     /**
+     * @ORM\ManyToMany(targetEntity="APIBundle\Entity\Location", cascade={"persist"})
+     */
+     private $stops;
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -27,7 +32,10 @@ class Bus
      * @ORM\Column(name="line", type="string", length=255)
      */
     private $line;
-
+    
+    public function __construct() {
+        $this->stops = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -61,6 +69,23 @@ class Bus
     public function getLine()
     {
         return $this->line;
+    }
+    
+    public function addStop(Location $stop)
+    {
+        $this->stops[] = $stop;
+
+        return $this;
+    }
+
+    public function removeStop(Location $stop)
+    {
+        $this->stops->removeElement($stop);
+    }
+
+    public function getStops()
+    {
+        return $this->stops;
     }
 }
 
