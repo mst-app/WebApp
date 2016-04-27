@@ -158,7 +158,7 @@ class User
     
     public function checkToken($token)
     {
-        return in_array($token, this->token); 
+        return in_array($token, $this->token); 
     }
 
     /**
@@ -166,14 +166,12 @@ class User
      *
      * @return array
      */
-    public function getToken()
+    public function getToken($i = -1)
     {
-        return $this->token;
-    }
-    
-    public function getToken(int i)
-    {
-        return $this->token[i];
+        if (i == -1)
+            return $this->token;
+        else
+            return $this->token[i];
     }
     
 }

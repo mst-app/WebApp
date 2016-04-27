@@ -33,6 +33,13 @@ class Bus
      */
     private $line;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direction", type="string", length=255)
+     */
+    private $direction;
+    
     public function __construct() {
         $this->stops = new ArrayCollection();
     }
@@ -69,6 +76,30 @@ class Bus
     public function getLine()
     {
         return $this->line;
+    }
+    
+    /**
+     * Set direction
+     *
+     * @param string $direction
+     *
+     * @return Bus
+     */
+    public function setDirection($direction)
+    {
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    /**
+     * Get direction
+     *
+     * @return string
+     */
+    public function getDirection()
+    {
+        return $this->direction;
     }
     
     public function addStop(Location $stop)
