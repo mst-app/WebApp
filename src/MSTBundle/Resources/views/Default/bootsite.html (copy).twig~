@@ -7,7 +7,15 @@
 
     <meta charset="utf-8">
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <link href="bootstrap.min.css" rel="stylesheet">
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.11/angular.js" data-semver="1.2.11"></script>
+    <script data-require="typeahead.js@*" data-semver="0.10.0" src="http://twitter.github.com/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script data-require="bloodhound.js@*" data-semver="0.10.0" src="http://twitter.github.com/typeahead.js/releases/latest/bloodhound.js"></script>
+    <script src="angular-typeahead.js"></script>
+    <script src="app.js"></script>
     <style>
       #map {
         width: 500px;
@@ -17,7 +25,9 @@
     <script src="bootstrap.js"></script>
   </head>
 
-<body >
+<body ng-controller="MainCtrl">
+
+
 <!-- NAVBAR===================-->
 <div class="navbar-wrapper">
     <!-- Wrap the .navbar in .container to center it within the absolutely
@@ -115,9 +125,9 @@
                 <div class="carousel-caption">
                      <div class="form-group">
                          <label for="InputPos">Bus number</label>
-                         <input type="text" class="form-control" id="line" placeholder="1"></div>
+                         <input class='typeahead' type="text" sf-typeahead options="exampleOptions" datasets="numbersDataset" ng-model="selectedNumber"></div>
                      <button onclick="printSchedule()">Click me</button>
-                     <div class="results"></div>
+                     <div class="print"></div>
                 </div>
             </div>
         </div>
@@ -149,6 +159,17 @@
     data-slide="next">›</a>
 </div>
 <!-- /.carousel -->
+
+    <p>Model: {{selectedNumber|json}}</p>
+    <input class='typeahead' type="text" sf-typeahead options="exampleOptions" datasets="numbersDataset" ng-model="selectedNumber">
+    <p>Model Non Editable: {{selectedNumberNonEditable|json}}</p>
+    <input class='typeahead' type="text" sf-typeahead options="exampleOptionsNonEditable" datasets="numbersDataset" ng-model="selectedNumberNonEditable">
+    <br>
+    <br>
+    <button type="button" ng-click="addValue()">Add 'twenty' to the dataset</button>
+    <button type="button" ng-click="setValue()">Set value (two-way demo)</button>
+    <button type="button" ng-click="clearValue()">Clear value to null</button>
+  </body>
 
 
 
