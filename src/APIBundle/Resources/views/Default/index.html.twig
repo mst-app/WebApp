@@ -1,1 +1,54 @@
-Hello World!
+<html>
+<head>
+</head>
+<body>
+<p>
+Authentication : <br />
+<br />
+GET /connect/login<br />
+<br />
+takes :<br />
+    login (string)<br />
+returns :<br />
+    n (sha256)<br />
+<br />
+<br />
+POST /connect/login<br />
+<br />
+takes :<br />
+    auth (sha256)<br />
+returns :<br />
+    success (bool)<br />
+    connection identifier (int)<br />
+    token (sha256)<br />
+with auth = hmac_sha256("login:n:sha256(password)", sha256(password))<br />
+    
+------------------------------------------------------------------------------------------------
+</p>
+<p>
+Sign in : <br />
+<br />    
+POST /signin<br />
+<br />
+takes:<br />
+    login(string)<br />
+    password(sha256)<br />
+returns:<br />
+    success(bool)<br />
+------------------------------------------------------------------------------------------------
+</p>
+<p>
+Add bus stop to Bus line :<br />
+    <br />
+POST /addstop/{busline}<br />
+    <br />
+    YOU MUST BE LOGGED IN<br />
+takes :<br />
+    login (string)<br />
+    connection number (cn) (int)<br />
+    data -> hmac256(stop name (string) + ":" + city name (string) + ":" + x (float) + ":" + y (float), token)<br />
+returns :<br />
+    success (bool) <br />
+</p>
+</body>
+</html>

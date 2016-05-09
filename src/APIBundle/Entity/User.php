@@ -20,7 +20,21 @@ class User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="randnum", type="string", length=255, nullable=true)
+     */
+    private $randnum;
+    
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="token", type="array", length=255, nullable=true)
+     */
+    private $token;
+    
     /**
      * @var string
      *
@@ -34,7 +48,10 @@ class User
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
-
+    
+    public function __construct() {
+        $this->token = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -93,5 +110,69 @@ class User
     {
         return $this->password;
     }
+    
+    /**
+     * Set randnum
+     *
+     * @param string $randnum
+     *
+     * @return User
+     */
+    public function setRandnum($randnum)
+    {
+        $this->randnum = $randnum;
+
+        return $this;
+    }
+
+    /**
+     * Get randnum
+     *
+     * @return string
+     */
+    public function getRandnum()
+    {
+        return $this->randnum;
+    }
+    
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return User
+     */
+    public function setToken($token)
+    {
+        $this->token[] = $token;
+
+        return $this;
+    }
+    
+    public function removeToken($token)
+    {
+        $this->token->removeElement($token);
+
+        return $this;
+    }
+    
+    public function checkToken($token)
+    {
+        return in_array($token, $this->token); 
+    }
+
+    /**
+     * Get token
+     *
+     * @return array
+     */
+    public function getToken($i = -1)
+    {
+        if (i == -1)
+            return $this->token;
+        else
+            return $this->token[i];
+    }
+    
 }
 
